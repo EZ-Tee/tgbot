@@ -1,21 +1,24 @@
-if not __name__.endswith("sample_config"):
-    import sys
-    print("The README is there to be read. Extend this sample config to a config file, don't just rename and change "
-          "values here. Doing that WILL backfire on you.\nBot quitting.", file=sys.stderr)
-    quit(1)
+# Create a new config.py or rename this to config.py file in same dir and import, then extend this class.
+import json
+import os
 
 
-# Create a new config.py file in same dir and import, then extend this class.
+def get_user_list(config, key):
+    with open("{}/tg_bot/{}".format(os.getcwd(), config), "r") as json_file:
+        return json.load(json_file)[key]
+
+
+# Create a new config.py or rename this to config.py file in same dir and import, then extend this class.
 class Config(object):
     LOGGER = True
-
     # REQUIRED
-    
-    API_ID = 2486084  # integer value, dont use ""
-    API_HASH = "cf50c6e0f61a8ac27a30a929b09bb802"
-    TOKEN = "1729484654:AAGU6996ZdQqSlqfWaAOoGLHzyo0ycBcTH4"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
-    OWNER_ID = 1675903713  # If you dont know, run the bot and do /id in your private chat with it, also an integer
-    OWNER_USERNAME = "tikka_bro"
+    # Login to https://my.telegram.org and fill in these slots with the details given by it
+
+    API_ID = 123456  # integer value, dont use ""
+    API_HASH = "awoo"
+    TOKEN = "BOT_TOKEN"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
+    OWNER_ID = 792109647  # If you dont know, run the bot and do /id in your private chat with it, also an integer
+    OWNER_USERNAME = "Sawada"
 
     # RECOMMENDED
     SQLALCHEMY_DATABASE_URI = 'sqldbtype://username:pw@hostname:port/db_name'  # needed for any database modules
